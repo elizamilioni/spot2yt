@@ -1,9 +1,9 @@
 import requests
-import argparse
 import os
-from pathlib import Path
 from bs4 import BeautifulSoup
 from pytube import YouTube
+
+
 
 def main(spotify_url,saving_dir):
     ret = requests.get(spotify_url)
@@ -48,3 +48,9 @@ if __name__ == "__main__":
     saving_dir = input('Give me the path of the folder to save the songs: ')
     main(spotify_url,saving_dir)
 
+    files = os.listdir(saving_dir)
+
+    for i in files:
+        if 'mp4' in str(i):
+            name, _ = i.split('.')
+            os.rename(saving_dir + '/' + i, saving_dir + '/' + name + '.mp3')
