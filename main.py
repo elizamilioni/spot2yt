@@ -5,7 +5,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from pytube import YouTube
 
-def main(spotify_url):
+def main(spotify_url,saving_dir):
     ret = requests.get(spotify_url)
     retcon = ret.content.decode('utf-8')
     file = open(os.path.join(os.getcwd(), 'spotify.html'),'w')
@@ -39,13 +39,12 @@ def main(spotify_url):
         print(song_url)
         yt = YouTube(song_url)
         audio = yt.streams.filter(only_audio = True).all()
-        path = os.path.join(str(Path.home()), '/Spotify')
-        #if not os.path.exists(path):
-        #    os.mkdir(path)
 
-        audio[0].download(output_path = os.path.join(path))
+
+        audio[0].download(output_path = saving_dir)
 
 if __name__ == "__main__":
     spotify_url = input('Give me spotify url: ')
-    main(spotify_url)
+    saving_dir = input('Give me the path of the folder to save the songs: ')
+    main(spotify_url,saving_dir)
 
