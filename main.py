@@ -43,7 +43,7 @@ def main(spotify_url):
         #if not os.path.exists(path):
         #    os.mkdir(path)
 
-        audio[0].download(output_path = os.path.join(str(Path.home()), '/Spotify'))
+        audio[0].download(output_path = os.path.join(path)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Please give spotify playlist url')
