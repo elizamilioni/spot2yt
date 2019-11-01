@@ -43,13 +43,9 @@ def main(spotify_url):
         #if not os.path.exists(path):
         #    os.mkdir(path)
 
-        audio[0].download(output_path = os.path.join(path)
+        audio[0].download(output_path = os.path.join(path))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Please give spotify playlist url')
-    parser.add_argument('--spotify_url', metavar='S',
-                   help='an integer for the accumulator')
-
-    args = parser.parse_args()
-    main(args.spotify_url)
+    spotify_url = input('Give me spotify url: ')
+    main(spotify_url)
 
